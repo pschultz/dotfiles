@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/pschultz/workspace/probetag-20110831'
+let g:netrw_dirhist_2='/home/pschultz/Zend/workspaces/DefaultWorkspace7/maklerbackend/app/views/layouts/default'
+let g:netrw_dirhist_3='/home/pschultz/Zend/workspaces/DefaultWorkspace7/maklerbackend/app/config/dev-with-live-db'
+let g:netrw_dirhist_4='/home/pschultz/src/raspberry/node-websocket/gen-perl'
+let g:netrw_dirhist_5='/home/pschultz/Zend/workspaces/DefaultWorkspace7/maklerbackend/app/config/production'
+let g:netrw_dirhist_6='/home/pschultz/Zend/workspaces/DefaultWorkspace7/jobanzeigen-backend/runtime'
