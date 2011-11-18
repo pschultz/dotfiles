@@ -27,6 +27,7 @@ if &diff
     colorscheme twilight256
 endif
 
+call pathogen#infect()
 
 if has("autocmd")
 
