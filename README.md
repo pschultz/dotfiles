@@ -8,8 +8,9 @@
     export USC="$(pwd)"
     
     cd $HOME
-    rm -rf .vim .vimrc
-    ln -s $USC/vim .vim
-    ln -s $USC/vimrc .vimrc
+    for f in vim vimrc bashrc bash_aliases; do
+        rm -rf .$f
+        ln -s $USC/$f .$f
+    done
     
     # add more symlinks as approriate
