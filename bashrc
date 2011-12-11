@@ -58,11 +58,17 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[1;30m\][\A] \[\033[00m\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-else
-    PS1='\[\033[1;30m\][\A] \[\033[00m\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
+function parse_git_dirty {
+    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+function parse_git_branch {
+    [ -d .git ] || return 
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+
+PROMPT_COMMAND='
+    PS1="\[\033[1;30m\][\A] \[\033[00m\]${debian_chroot:+($debian_chroot)}\u@\h:\w\[\033[1;30m\]$(parse_git_branch)\[\033[00m\]\$ "
+'
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -91,10 +97,7 @@ function new-desktop-background () {
 
     test -n "$1" && WPD=$1
 
-    if [ -z $WPD -o ! -d $WPD ]; then
-        echo "no such directory: '$WPD'" >&2
-        return
-    fi
+    [ -z $WPD -o ! -d $WPD ] && return
 
     imageList=$(find $WPD -type f -o -type l)
     numberOfImages=$(cat<<EOS | wc -l
