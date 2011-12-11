@@ -66,7 +66,7 @@ function parse_git_branch {
 }
 
 PROMPT_COMMAND='
-    PS1="\[\033[1;30m\][\A] \[\033[00m\]${debian_chroot:+($debian_chroot)}\u@\h:\w\[\033[1;30m\]$(parse_git_branch)\[\033[00m\]\$ "
+    PS1="\[\033[1;30m\][\A] \[\033[00m\]${debian_chroot:+($debian_chroot)}\u@\h:\w\[\033[1;30m\]$(parse_git_branch)\[\033[00m\]\\$ "
 '
 unset color_prompt force_color_prompt
 
