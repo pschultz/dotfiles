@@ -1,5 +1,10 @@
 #!/bin/bash
 
+alias ll='ls -l --color=auto'
+alias rm='rm -rf'
+alias cp='cp -r'
+
+alias grep='egrep -nH --color=auto'
 alias to_unix_line_ending="perl -pi -e 's/\r\n|\n|\r/\n/g' $@";
 alias cake='/home/pschultz/workspace/frameworks/cakephp/1.2.x/cake/console/cake -app /home/pschultz/Zend/workspaces/DefaultWorkspace7/maklerbackend/app'
 
