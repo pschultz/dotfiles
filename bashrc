@@ -97,6 +97,17 @@ esac
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+function cpp() {
+    size=$(stat -c '%s' $1)
+    (pv -s $size -n $1 | cat > $2) 2>&1 | dialog --gauge "cp $1 $2" 7 70
+}
+
+# no need to do fancy wallpaperstuff without something to display it on
+[ -z "$DISPLAY" ] && return 0
+
+# also, this fails horribly on Solaris
+[ "$(uname)" == "SunOS" ] && return 0
+
 function new-desktop-background () {
     WPD=$WALLPAPER_DIR
 
@@ -121,9 +132,3 @@ EOS
 WALLPAPER_DIR=/home/pschultz/Pictures/wallpapers/dodge-charger
 
 new-desktop-background
-
-function cpp() {
-    size=$(stat -c '%s' $1)
-    (pv -s $size -n $1 | cat > $2) 2>&1 | dialog --gauge "cp $1 $2" 7 70
-}
-
