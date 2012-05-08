@@ -35,6 +35,7 @@ if has("autocmd")
   au FileType javascript setl sw=2 sts=2 et
   au FileType coffee     setl sw=2 sts=2 et
   au FileType html       setl sw=2 sts=2 et
+  au FileType twig       setl sw=2 sts=2 et
   au FileType xml        setl sw=2 sts=2 et
 
   " Use hard tabs for Makefiles
@@ -64,6 +65,7 @@ if has("autocmd")
   "  \ endif
 
   au BufNewFile,BufRead *.less set filetype=less
+  au BufNewFile,BufRead *.twig set filetype=twig
 
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost * if line("'\"") > 1 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif
