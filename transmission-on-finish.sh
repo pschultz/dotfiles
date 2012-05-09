@@ -1,6 +1,6 @@
-#! /bin/bash
+#!/bin/bash
 function stamp() {
-  printf "%s %6d\n" $(date "+%Y-%m-%d %H:%M:%S") $$
+  printf "%s %6d\n" "$(date '+%Y-%m-%d %H:%M:%S')" $$
 }
 
 cd $(dirname $0);
@@ -10,7 +10,6 @@ LOG_FILE="$(pwd)/${BASENAME%sh}log"
 {
   TR_USERNAME=""
   TR_PASSWORD=""
-  NOW=$(date +%Y-%m-%d\ %H:%M:%S)
   SRC_DIR="${TR_TORRENT_DIR}/${TR_TORRENT_NAME}"
   DEST_DIR="${TR_TORRENT_DIR}/"
   TR_TORRENT_PARAMETER="EXTRACT"
