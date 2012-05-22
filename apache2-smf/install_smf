@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+cd $(dirname "${0}")
+
+cp apache2 /lib/svc/method/
+chown root:bin /lib/svc/method/apache2
+chmod 555 /lib/svc/method/apache2
+
+svccfg import -V apache2.xml
