@@ -27,6 +27,12 @@ if &diff
     colorscheme twilight256
 endif
 
+let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
+let g:php_cs_fixer_level = "all"
+let g:php_cs_fixer_config = "default"
+let g:php_cs_fixer_php_path = "php"
+let g:php_cs_fixer_fixers_list = ""
+
 call pathogen#infect()
 
 if has("autocmd")
@@ -37,6 +43,7 @@ if has("autocmd")
   au FileType html       setl sw=2 sts=2 et
   au FileType twig       setl sw=2 sts=2 et
   au FileType xml        setl sw=2 sts=2 et
+  au FileType php        nnoremap <leader>f :w<CR>:call PhpCsFixerFixFile()<CR>:e<CR>
 
   " Use hard tabs for Makefiles
   au FileType make setl noet sw=4 ts=4
