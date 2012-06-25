@@ -27,6 +27,7 @@ if &diff
     colorscheme twilight256
 endif
 
+let g:PHP_vintage_case_default_indent = 1
 let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
 let g:php_cs_fixer_level = "all"
 let g:php_cs_fixer_config = "default"
