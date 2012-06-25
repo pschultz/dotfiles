@@ -1,7 +1,20 @@
-#! /bin/bash
+#!/bin/bash
 function stamp() {
-  printf "%s %6d\n" $(date "+%Y-%m-%d %H:%M:%S") $$
+  printf "%s %6d\n" "$(date '+%Y-%m-%d %H:%M:%S')" $$
 }
+
+get_next_zfs() {
+    [ "${1}" = "/" ] && return
+    [ "${1}" = "." ] && return
+    [ -z "${1}" ]    && return
+
+    fs="${1#/}"
+
+    zfs list "${fs}" 2>/dev/null >&2 && echo "${fs}" && return
+
+    get_next_zfs $(dirname "${fs}")
+}
+
 
 cd $(dirname $0);
 BASENAME=$(basename $0);
@@ -10,7 +23,6 @@ LOG_FILE="$(pwd)/${BASENAME%sh}log"
 {
   TR_USERNAME=""
   TR_PASSWORD=""
-  NOW=$(date +%Y-%m-%d\ %H:%M:%S)
   SRC_DIR="${TR_TORRENT_DIR}/${TR_TORRENT_NAME}"
   DEST_DIR="${TR_TORRENT_DIR}/"
   TR_TORRENT_PARAMETER="EXTRACT"
@@ -21,6 +33,23 @@ LOG_FILE="$(pwd)/${BASENAME%sh}log"
 
   if [ -e "$SRC_DIR/skip" ]; then
     TR_TORRENT_PARAMETER="$TR_TORRENT_PARAMETER SKIP"
+  fi
+
+  fs=""
+  zfs=$(readlink -f $(type -p zfs) 2>/dev/null)
+
+  if [ -n "$zfs" -a -x "$zfs" ]; then
+    fs=$(get_next_zfs "$SRC_DIR")
+
+    if [ -n "$fs" ]; then
+      SNAPSHOT_NAME=finished-$(echo "$TR_TORRENT_NAME" | tr -cs '[:alnum:]' '-' | sed -e 's/^-\+//' -e 's/-\+$//')
+
+      echo "$(stamp)" "$zfs snapshot ${fs}@$SNAPSHOT_NAME"
+      zfs snapshot ${fs}@$SNAPSHOT_NAME
+
+      # note that this can still fail, if the user has not been granted the
+      # snapshot privilege on the respective filesystem
+    fi
   fi
 
   if [[ "$TR_TORRENT_PARAMETER" =~ "SKIP" ]]; then

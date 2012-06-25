@@ -1,0 +1,58 @@
+#!/bin/sh
+#
+# apache2
+#
+# Chris Miles 20050624
+# http://chrismiles.info/systemsadmin/solaris/articles/setting-up-smf-for-apache-and-zope-on-solaris-10
+#
+
+. /lib/svc/share/smf_include.sh
+
+PATH=${PATH}:/usr/apache2/2.2/bin
+APACHECONF=/etc/apache2/2.2/httpd.conf
+APACHECTL=/usr/apache2/2.2/bin/apachectl
+PIDFILE=/var/run/apache2/2.2/httpd.pid
+
+if [ -f $PIDFILE ] ; then
+        pid=`cat $PIDFILE 2>/dev/null`
+else
+        pid=`pgrep httpd`
+fi
+
+logmsg()
+{
+        logger -p daemon.warning -t apache2 "$1"
+        echo "$1" >&2
+}
+
+case "$1" in
+        start)
+                [ ! -f ${APACHECONF} ] && exit 0
+                [ -n "$pid" ] && kill -TERM $pid 2>/dev/null
+                $APACHECTL -k start
+                if [ $? -ne 0 ]
+                then
+                        exit $SMF_EXIT_ERR_CONIG
+                fi
+                ;;
+
+        stop)
+                $APACHECTL -k stop
+                ;;
+
+        reload)
+                $APACHECTL -k graceful
+                ;;
+
+        restart)
+                $APACHECTL -k restart
+                ;;
+
+        *)
+                echo "Usage: $0 \c" >&2
+                echo "(start|stop|reload|restart)" >&2
+                exit 1
+                ;;
+
+esac
+exit $SMF_EXIT_OK

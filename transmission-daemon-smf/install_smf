@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+cd $(dirname "${0}")
+
+cp transmission-daemon /lib/svc/method/
+chown root:bin /lib/svc/method/transmission-daemon
+chmod 555 /lib/svc/method/transmission-daemon
+svccfg import -V transmission-daemon.xml
