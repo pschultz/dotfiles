@@ -5,6 +5,7 @@ se expandtab shiftwidth=4 softtabstop=4
 color twilight256
 se cursorline
 hi cursorline  cterm=NONE ctermbg=234 ctermfg=none guibg=black guifg=none
+hi ColorColumn ctermbg=234
 
 vmap <space> zf
 
@@ -45,6 +46,7 @@ if has("autocmd")
   au FileType twig       setl sw=2 sts=2 et
   au FileType xml        setl sw=2 sts=2 et
   au FileType php        nnoremap <leader>f :w<CR>:call PhpCsFixerFixFile()<CR>:e<CR>
+  au FileType php        setl cc=121
 
   " Use hard tabs for Makefiles
   au FileType make setl noet sw=4 ts=4
