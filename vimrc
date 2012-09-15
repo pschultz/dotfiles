@@ -39,6 +39,8 @@ call pathogen#infect()
 
 if has("autocmd")
 
+  nnoremap <leader>u :r ! php -r 'echo uniqid("",1);'<CR>
+
   " These languages tend to have quite deep nesting levels, so set tabwidth to 2
   au FileType javascript setl sw=2 sts=2 et
   au FileType coffee     setl sw=2 sts=2 et
