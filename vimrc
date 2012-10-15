@@ -47,6 +47,7 @@ if has("autocmd")
   au FileType html       setl sw=2 sts=2 et
   au FileType twig       setl sw=2 sts=2 et
   au FileType xml        setl sw=2 sts=2 et
+  au FileType puppet     hi cursorline  cterm=NONE ctermbg=234 ctermfg=none guibg=black guifg=none
   au FileType php        nnoremap <leader>f :w<CR>:call PhpCsFixerFixFile()<CR>:e<CR>
   au FileType php        setl cc=121
 
