@@ -22,3 +22,6 @@
 [submodule "vim/bundle/nginx"]
 	path = vim/bundle/nginx
 	url = git@github.com:pschultz/nginx-vim-syntax.git
+[submodule "vim/bundle/vim-twig"]
+	path = vim/bundle/vim-twig
+	url = git://github.com/beyondwords/vim-twig.git

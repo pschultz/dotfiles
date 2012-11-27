@@ -79,6 +79,7 @@ if has("autocmd")
 
   au BufNewFile,BufRead *.less set filetype=less
   au BufNewFile,BufRead *.twig set filetype=twig
+  au BufNewFile,BufRead *.html.twig set filetype=html.twig
 
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost * if line("'\"") > 1 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif
