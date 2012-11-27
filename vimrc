@@ -50,6 +50,7 @@ if has("autocmd")
   au FileType puppet     hi cursorline  cterm=NONE ctermbg=234 ctermfg=none guibg=black guifg=none
   au FileType php        nnoremap <leader>f :w<CR>:call PhpCsFixerFixFile()<CR>:e<CR>
   au FileType php        setl cc=121
+  au FileType xml        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
 
   " Use hard tabs for Makefiles
   au FileType make setl noet sw=4 ts=4
