@@ -4,6 +4,13 @@ alias ll='ls -l --color=auto'
 alias rm='rm -rf'
 alias cp='cp -r'
 
+alias ys='sudo yum search'
+alias yi='sudo yum install'
+alias yu='sudo yum update'
+alias yr='sudo yum remove --remove-leaves'
+alias yp='sudo yum provides'
+alias ymc='sudo yum makecache'
+
 alias grep='egrep -nH --color=auto'
 alias to_unix_line_ending="perl -pi -e 's/\r\n|\n|\r/\n/g' $@";
 alias cake='/home/pschultz/workspace/frameworks/cakephp/1.2.x/cake/console/cake -app /home/pschultz/Zend/workspaces/DefaultWorkspace7/maklerbackend/app'
