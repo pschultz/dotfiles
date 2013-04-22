@@ -47,10 +47,13 @@ if has("autocmd")
   au FileType html       setl sw=2 sts=2 et
   au FileType twig       setl sw=2 sts=2 et
   au FileType xml        setl sw=2 sts=2 et
+  au FileType ruby       setl sw=2 sts=2 et
   au FileType puppet     hi cursorline  cterm=NONE ctermbg=234 ctermfg=none guibg=black guifg=none
   au FileType php        nnoremap <leader>f :w<CR>:call PhpCsFixerFixFile()<CR>:e<CR>
   au FileType php        setl cc=121
   au FileType xml        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
+  au FileType xsd        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
+  au FileType javascript nnoremap <leader>f :w<CR>:%!prettify_json.rb<CR>
 
   " Use hard tabs for Makefiles
   au FileType make setl noet sw=4 ts=4
