@@ -90,45 +90,10 @@ esac
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
+
 [ -f /etc/bash_aliases ] && . /etc/bash_aliases
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 [ -f ~/.bash_env ] && . ~/.bash_env
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-function cpp() {
-    size=$(stat -c '%s' $1)
-    (pv -s $size -n $1 | cat > $2) 2>&1 | dialog --gauge "cp $1 $2" 7 70
-}
-
-# no need to do fancy wallpaperstuff without something to display it on
-[ -z "$DISPLAY" ] && return 0
-
-# also, this fails horribly on Solaris
-[ "$(uname)" == "SunOS" ] && return 0
-
-function new-desktop-background () {
-    WPD=$WALLPAPER_DIR
-
-    test -n "$1" && WPD=$1
-
-    [ -z $WPD -o ! -d $WPD ] && return
-
-    imageList=$(find $WPD -type f -o -type l)
-    numberOfImages=$(cat<<EOS | wc -l
-$imageList 
-EOS
-)
-
-    randomImage=$(cat<<EOS | head -n $((RANDOM % $numberOfImages + 1)) | tail -1
-$imageList
-EOS
-)
-
-    gsettings set org.gnome.desktop.background picture-uri "file://$randomImage"
-}
-
-WALLPAPER_DIR=/home/pschultz/Pictures/wallpapers/dodge-charger
-
-new-desktop-background
