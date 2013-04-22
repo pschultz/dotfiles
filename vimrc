@@ -54,6 +54,7 @@ if has("autocmd")
   au FileType xml        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType xsd        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType javascript nnoremap <leader>f :w<CR>:%!prettify_json.rb<CR>
+  au FileType go         nnoremap <leader>f mf:w<CR>:%!gofmt<CR>'f
 
   " Use hard tabs for Makefiles
   au FileType make setl noet sw=4 ts=4
