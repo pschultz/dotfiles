@@ -108,3 +108,4 @@ else
 
 endif " has("autocmd")
 
+set exrc
