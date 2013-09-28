@@ -56,7 +56,7 @@ if has("autocmd")
   au FileType php        setl cc=121
   au FileType xml        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType xsd        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
-  au FileType javascript nnoremap <leader>f :w<CR>:%!prettify_json.rb<CR>
+  au FileType javascript nnoremap <leader>f :w<CR>:%!python -mjson.tool<CR>
   au FileType go         nnoremap <leader>f mf:w<CR>:%!gofmt<CR>'f
   au FileType go         setl ts=4 expandtab
 
@@ -88,7 +88,7 @@ if has("autocmd")
 
   au BufNewFile,BufRead *.less set filetype=less
   au BufNewFile,BufRead *.json set filetype=javascript
-  au BufNewFile,BufRead *.json nnoremap <leader>f :w<CR>:%!prettify_json.rb<CR>
+  au BufNewFile,BufRead *.json nnoremap <leader>f :w<CR>:%!python -mjson.tool<CR>
   au BufNewFile,BufRead *.god  set filetype=ruby
   au BufNewFile,BufRead *.twig set filetype=twig
   au BufNewFile,BufRead *.html.twig set filetype=html.twig
