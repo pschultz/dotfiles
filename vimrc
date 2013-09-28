@@ -93,6 +93,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.twig set filetype=twig
   au BufNewFile,BufRead *.html.twig set filetype=html.twig
   au BufNewFile,BufRead *.god  set filetype=ruby
+  au BufNewFile,BufRead *.ejs set filetype=html
 
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost * if line("'\"") > 1 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif
