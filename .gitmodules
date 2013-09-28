@@ -25,3 +25,12 @@
 [submodule "vim/bundle/vim-twig"]
 	path = vim/bundle/vim-twig
 	url = git://github.com/beyondwords/vim-twig.git
+[submodule "vim/bundle/phpqa"]
+	path = vim/bundle/phpqa
+	url = git@github.com:joonty/vim-phpqa.git
+[submodule "vim/bundle/vim-php-refactor"]
+	path = vim/bundle/vim-php-refactor
+	url = git@github.com:beberlei/vim-php-refactor.git
+[submodule "vim/bundle/vim-commaobject"]
+	path = vim/bundle/vim-commaobject
+	url = git@github.com:austintaylor/vim-commaobject.git

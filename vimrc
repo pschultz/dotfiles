@@ -34,6 +34,9 @@ let g:php_cs_fixer_level = "all"
 let g:php_cs_fixer_config = "default"
 let g:php_cs_fixer_php_path = "php"
 let g:php_cs_fixer_fixers_list = ""
+let g:phpqa_messdetector_autorun = 0
+let g:phpqa_codesniffer_autorun = 1
+let g:phpqa_codesniffer_args = "--standard=PSR2"
 
 call pathogen#infect()
 
