@@ -27,6 +27,7 @@ Bundle 'beyondwords/vim-twig'
 Bundle 'joonty/vim-phpqa'
 Bundle 'beberlei/vim-php-refactor'
 Bundle 'austintaylor/vim-commaobject'
+Bundle 'tpope/vim-pathogen'
 Bundle 'scrooloose/syntastic'
 
 if iCanHazVundle == 0
@@ -39,6 +40,8 @@ if filereadable('/usr/local/go/misc/vim/readme.txt')
     set rtp+=/usr/local/go/misc/vim
 endif
 
+call pathogen#infect() " Need this for syntastic
+
 filetype plugin indent on
 
 syntax on
@@ -49,6 +52,8 @@ color twilight256
 se cursorline
 hi cursorline  cterm=none ctermbg=234 ctermfg=none guibg=black guifg=none
 hi colorcolumn ctermbg=234
+
+Helptags
 
 let g:gofmt_command = '~/bin/goimports'
 
