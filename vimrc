@@ -115,6 +115,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.json set filetype=javascript
   au BufNewFile,BufRead *.json nnoremap <leader>f :w<CR>:%!python -mjson.tool<CR>
   au BufNewFile,BufRead *.god  set filetype=ruby
+  au BufNewFile,BufRead *.thor set filetype=ruby
   au BufNewFile,BufRead *.twig set filetype=twig
   au BufNewFile,BufRead *.html.twig set filetype=html.twig
   au BufNewFile,BufRead *.god  set filetype=ruby
