@@ -18,7 +18,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'seebi/dircolors-solarized'
 Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'godlygeek/tabular'
 Bundle 'pschultz/snipmate.vim'
