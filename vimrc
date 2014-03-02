@@ -119,7 +119,7 @@ if has("autocmd")
   augroup vimrcEx
   au! 
 
-  autocmd FileType go autocmd BufWritePre <buffer> Fmt
+  autocmd FileType go autocmd BufWritePre <buffer> silent Fmt
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
