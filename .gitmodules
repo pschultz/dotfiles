@@ -1,36 +1,6 @@
-[submodule "vim/vim-pathogen"]
-	path = vim/vim-pathogen
-	url = git://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/vim-coffee-script"]
-	path = vim/bundle/vim-coffee-script
-	url = git://github.com/kchmck/vim-coffee-script.git
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
 	url = git://github.com/seebi/dircolors-solarized.git
-[submodule "vim/bundle/vim-php-cs-fixer"]
-	path = vim/bundle/vim-php-cs-fixer
-	url = git://github.com/stephpy/vim-php-cs-fixer.git
-[submodule "vim/bundle/tabular"]
-	path = vim/bundle/tabular
-	url = git://github.com/godlygeek/tabular.git
-[submodule "vim/bundle/snipmate"]
-	path = vim/bundle/snipmate
-	url = git@github.com:pschultz/snipmate.vim.git
-[submodule "vim/bundle/puppet"]
-	path = vim/bundle/puppet
-	url = git://github.com/rodjek/vim-puppet.git
-[submodule "vim/bundle/nginx"]
-	path = vim/bundle/nginx
-	url = git@github.com:pschultz/nginx-vim-syntax.git
-[submodule "vim/bundle/vim-twig"]
-	path = vim/bundle/vim-twig
-	url = git://github.com/beyondwords/vim-twig.git
-[submodule "vim/bundle/phpqa"]
-	path = vim/bundle/phpqa
-	url = git@github.com:joonty/vim-phpqa.git
-[submodule "vim/bundle/vim-php-refactor"]
-	path = vim/bundle/vim-php-refactor
-	url = git@github.com:beberlei/vim-php-refactor.git
-[submodule "vim/bundle/vim-commaobject"]
-	path = vim/bundle/vim-commaobject
-	url = git@github.com:austintaylor/vim-commaobject.git
+[submodule "vim/bundle/vundle"]
+	path = vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git

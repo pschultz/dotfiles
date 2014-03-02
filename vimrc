@@ -1,11 +1,38 @@
+set nocompatible
+filetype off
+filetype plugin indent off
+
+set rtp+=/usr/local/go/misc/vim
+set rtp+=~/.vim/bundle/vundle/
+
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'seebi/dircolors-solarized'
+Bundle 'stephpy/vim-php-cs-fixer'
+Bundle 'godlygeek/tabular'
+Bundle 'pschultz/snipmate.vim'
+Bundle 'rodjek/vim-puppet'
+Bundle 'pschultz/nginx-vim-syntax'
+Bundle 'beyondwords/vim-twig'
+Bundle 'joonty/vim-phpqa'
+Bundle 'beberlei/vim-php-refactor'
+Bundle 'austintaylor/vim-commaobject'
+Bundle 'scrooloose/syntastic'
+
+filetype plugin indent on
+
 syntax on
 se ai nu vb t_Co=256 pastetoggle=<F9> scrolloff=3 hlsearch history=1000 listchars=tab:>-,trail:-,extends:>,precedes:<
 se expandtab shiftwidth=4 softtabstop=4
 
 color twilight256
 se cursorline
-hi cursorline  cterm=NONE ctermbg=234 ctermfg=none guibg=black guifg=none
-hi ColorColumn ctermbg=234
+hi cursorline  cterm=none ctermbg=234 ctermfg=none guibg=black guifg=none
+hi colorcolumn ctermbg=234
+
+let g:gofmt_command = '~/bin/goimports'
 
 vmap <space> zf
 
@@ -29,7 +56,7 @@ if &diff
 endif
 
 let g:PHP_vintage_case_default_indent = 1
-let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer"
+let g:php_cs_fixer_path = "~/bin/php-cs-fixer.phar"
 let g:php_cs_fixer_level = "all"
 let g:php_cs_fixer_config = "default"
 let g:php_cs_fixer_php_path = "php"
@@ -37,8 +64,6 @@ let g:php_cs_fixer_fixers_list = ""
 let g:phpqa_messdetector_autorun = 0
 let g:phpqa_codesniffer_autorun = 1
 let g:phpqa_codesniffer_args = "--standard=PSR2"
-
-call pathogen#infect()
 
 if has("autocmd")
 
@@ -57,8 +82,6 @@ if has("autocmd")
   au FileType xml        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType xsd        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType javascript nnoremap <leader>f :w<CR>:%!python -mjson.tool<CR>
-  au FileType go         nnoremap <leader>f mf:w<CR>:%!gofmt<CR>'f
-  au FileType go         setl ts=4 expandtab
 
   " Use hard tabs for Makefiles
   au FileType make setl noet sw=4 ts=4
@@ -72,6 +95,8 @@ if has("autocmd")
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
   au! 
+
+  autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
