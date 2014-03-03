@@ -29,6 +29,8 @@ Bundle 'beberlei/vim-php-refactor'
 Bundle 'austintaylor/vim-commaobject'
 Bundle 'tpope/vim-pathogen'
 Bundle 'scrooloose/syntastic'
+Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'brookhong/DBGPavim'
 
 if iCanHazVundle == 0
     echo "Installing Bundles, please ignore key map error messages"
@@ -85,7 +87,7 @@ let g:php_cs_fixer_config = "default"
 let g:php_cs_fixer_php_path = "php"
 let g:php_cs_fixer_fixers_list = ""
 let g:phpqa_messdetector_autorun = 0
-let g:phpqa_codesniffer_autorun = 1
+let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_codesniffer_args = "--standard=PSR2"
 
 if has("autocmd")
@@ -143,6 +145,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.html.twig set filetype=html.twig
   au BufNewFile,BufRead *.god  set filetype=ruby
   au BufNewFile,BufRead *.ejs set filetype=html
+  au BufNewFile,BufRead *.sls set filetype=yaml
 
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost * if line("'\"") > 1 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif
