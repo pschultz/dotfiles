@@ -27,6 +27,10 @@ shopt -s checkwinsize
 # turbo-charged pattern matching
 shopt -s extglob
 
+# a command name that is the name of a directory is executed as if it
+# were the argument to the cd command
+shopt -s autocd
+
 # shared history
 shopt -s histappend
 #export PROMPT_COMMAND="history -a; history -n"
