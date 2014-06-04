@@ -101,3 +101,5 @@ esac
 [ -f ~/.bash_env ] && . ~/.bash_env
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+[ -f ~/bin/direnv ] && eval "$(~/bin/direnv hook bash)"
