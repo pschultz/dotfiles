@@ -31,6 +31,7 @@ Bundle 'tpope/vim-pathogen'
 Bundle 'scrooloose/syntastic'
 Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'brookhong/DBGPavim'
+Bundle 'altercation/vim-colors-solarized'
 
 if iCanHazVundle == 0
     echo "Installing Bundles, please ignore key map error messages"
