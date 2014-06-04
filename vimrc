@@ -57,7 +57,6 @@ hi colorcolumn ctermbg=234
 
 Helptags
 
-let g:gofmt_command = '~/bin/goimports'
 
 vmap <space> zf
 
@@ -89,6 +88,8 @@ let g:php_cs_fixer_fixers_list = ""
 let g:phpqa_messdetector_autorun = 0
 let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_codesniffer_args = "--standard=PSR2"
+let g:gofmt_command = '~/bin/goimports'
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go'],'passive_filetypes': [] }
 
 if has("autocmd")
 
