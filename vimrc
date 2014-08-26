@@ -55,6 +55,8 @@ se ai nu vb t_Co=256 pastetoggle=<F9> scrolloff=3 hlsearch history=1000 listchar
 se expandtab shiftwidth=4 softtabstop=4
 
 color twilight256
+"color solarized
+"se background=light
 se cursorline
 hi cursorline  cterm=none ctermbg=234 ctermfg=none guibg=black guifg=none
 hi colorcolumn ctermbg=234
