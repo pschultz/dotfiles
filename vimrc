@@ -32,6 +32,9 @@ Bundle 'scrooloose/syntastic'
 Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'brookhong/DBGPavim'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'editorconfig/editorconfig-vim'
+
+" Use :PluginInstall to install newly added plugins
 
 if iCanHazVundle == 0
     echo "Installing Bundles, please ignore key map error messages"
