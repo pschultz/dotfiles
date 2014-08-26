@@ -60,6 +60,7 @@ hi cursorline  cterm=none ctermbg=234 ctermfg=none guibg=black guifg=none
 hi colorcolumn ctermbg=234
 
 nnoremap <leader>cl :hi cursorline  cterm=none ctermbg=234 ctermfg=none guibg=black guifg=none<CR>:hi colorcolumn ctermbg=234<CR>
+nnoremap <leader>s :sort<CR>
 
 Helptags
 
