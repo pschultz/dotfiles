@@ -49,7 +49,4 @@ ssh $USER@$( ssh $( awk '/server-id/ { print $3 }' $( ls -1tr /var/lib/dhclient/
 set -x
 }
 
-export DOCKER="docker -H 192.168.30.2:5555"
-export docker=$DOCKER
-alias docker=$DOCKER
-alias docker-clean='docker ps -a -q | xargs $docker rm; docker images | awk "/<none>/ { print \$3 }" | xargs $docker rmi'
+alias docker-clean='docker ps -a -q | xargs --no-run-if-empty --max-args 5 docker rm; docker images | awk "/<none>/ { print \$3 }" | xargs --no-run-if-empty --max-args 5 docker rmi'
