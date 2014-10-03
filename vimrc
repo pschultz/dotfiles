@@ -162,8 +162,6 @@ if has("autocmd")
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost * if line("'\"") > 1 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-  au BufWritePost *.coffee silent make! --bare
-
   augroup END 
 
 else
