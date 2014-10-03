@@ -15,6 +15,7 @@ alias grep='grep -E -nH --color=auto'
 alias to_unix_line_ending="perl -pi -e 's/\r\n|\n|\r/\n/g' $@";
 alias cake='/home/pschultz/workspace/frameworks/cakephp/1.2.x/cake/console/cake -app /home/pschultz/Zend/workspaces/DefaultWorkspace7/maklerbackend/app'
 
+alias dphp='php -d xdebug.remote_autostart=1 -d xdebug.remote_enable=1'
 alias prove='prove -l'
 export WCGREP_GREPARGS='--color=auto'
 alias wg='wcgrep -n'
