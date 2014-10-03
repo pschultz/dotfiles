@@ -33,6 +33,7 @@ Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'brookhong/DBGPavim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'vim-scripts/bats.vim'
 
 " Use :PluginInstall to install newly added plugins
 
