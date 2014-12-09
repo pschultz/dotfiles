@@ -103,3 +103,8 @@ esac
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 [ -f ~/bin/direnv ] && eval "$(~/bin/direnv hook bash)"
+
+if [ -d $HOME/.bash_completion.d ]; then
+    complete -C $HOME/.bash_completion.d/rake_autocomplete.rb -o default rake
+    . $HOME/.bash_completion.d/composer.sh
+fi

@@ -73,3 +73,5 @@ _complete_sf2_app_console() {
 
 export COMP_WORDBREAKS="\ \"\\'><=;|&("
 complete -F _complete_sf2_app_console bin/console
+complete -F _complete_sf2_app_console cmp
+complete -F _complete_sf2_app_console composer.phar
