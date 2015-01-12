@@ -34,6 +34,7 @@ Bundle 'brookhong/DBGPavim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'vim-scripts/bats.vim'
+Bundle 'fatih/vim-go'
 
 " Use :PluginInstall to install newly added plugins
 
@@ -41,10 +42,6 @@ if iCanHazVundle == 0
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
     :BundleInstall
-endif
-
-if filereadable('/usr/local/go/misc/vim/readme.txt')
-    set rtp+=/usr/local/go/misc/vim
 endif
 
 call pathogen#infect() " Need this for syntastic
