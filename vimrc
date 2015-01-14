@@ -2,46 +2,53 @@ set nocompatible
 filetype off
 filetype plugin indent off
 
+if filereadable(expand('~/.vim/bundle/vundle/README.md'))
+    echo "Removing old version of Vundle.."
+    echo ""
+    silent !rm -rf ~/.vim/bundle/vundle
+endif
 
 let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
 if !filereadable(vundle_readme)
     echo "Installing Vundle.."
     echo ""
     silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    silent !git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim
     let iCanHazVundle=0
 endif
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'stephpy/vim-php-cs-fixer'
-Bundle 'godlygeek/tabular'
-Bundle 'pschultz/snipmate.vim'
-Bundle 'rodjek/vim-puppet'
-Bundle 'pschultz/nginx-vim-syntax'
-Bundle 'beyondwords/vim-twig'
-Bundle 'joonty/vim-phpqa'
-Bundle 'beberlei/vim-php-refactor'
-Bundle 'austintaylor/vim-commaobject'
-Bundle 'tpope/vim-pathogen'
-Bundle 'scrooloose/syntastic'
-Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'brookhong/DBGPavim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'vim-scripts/bats.vim'
-Bundle 'fatih/vim-go'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'stephpy/vim-php-cs-fixer'
+Plugin 'godlygeek/tabular'
+Plugin 'pschultz/snipmate.vim'
+Plugin 'rodjek/vim-puppet'
+Plugin 'pschultz/nginx-vim-syntax'
+Plugin 'beyondwords/vim-twig'
+"Plugin 'joonty/vim-phpqa'
+Plugin 'beberlei/vim-php-refactor'
+Plugin 'austintaylor/vim-commaobject'
+Plugin 'tpope/vim-pathogen'
+Plugin 'scrooloose/syntastic'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'brookhong/DBGPavim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'vim-scripts/bats.vim'
+Plugin 'fatih/vim-go'
 
 " Use :PluginInstall to install newly added plugins
+
+call vundle#end()
 
 if iCanHazVundle == 0
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
-    :BundleInstall
+    :PluginInstall
 endif
 
 call pathogen#infect() " Need this for syntastic
