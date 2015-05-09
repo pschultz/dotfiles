@@ -95,11 +95,12 @@ if &diff
 endif
 
 let g:PHP_vintage_case_default_indent = 1
-let g:php_cs_fixer_path = "~/bin/php-cs-fixer.phar"
+let g:php_cs_fixer_path = "php-cs-fixer"
 let g:php_cs_fixer_level = "all"
-let g:php_cs_fixer_config = "default"
+"let g:php_cs_fixer_config = "default"
 let g:php_cs_fixer_php_path = "php"
-let g:php_cs_fixer_fixers_list = ""
+"let g:php_cs_fixer_fixers_list = ""
+"let g:php_cs_fixer_verbose = 1
 let g:phpqa_messdetector_autorun = 0
 let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_codesniffer_args = "--standard=PSR2"
