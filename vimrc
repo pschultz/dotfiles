@@ -120,7 +120,7 @@ if has("autocmd")
   au FileType go         setl ts=4
   au FileType puppet     hi cursorline  cterm=NONE ctermbg=234 ctermfg=none guibg=black guifg=none
   au FileType php        nnoremap <leader>f :w<CR>:call PhpCsFixerFixFile()<CR>:e<CR>
-  au FileType php        setl cc=121
+  au FileType php        setl cc=151
   au FileType xml        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType xsd        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType javascript nnoremap <leader>f :w<CR>:%!python -mjson.tool<CR>
