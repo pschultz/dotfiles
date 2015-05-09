@@ -105,7 +105,7 @@ let g:phpqa_messdetector_autorun = 0
 let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_codesniffer_args = "--standard=PSR2"
 let g:gofmt_command = '~/bin/goimports'
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go', 'javascript'],'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go', 'javascript', 'coffee'],'passive_filetypes': [] }
 let g:syntastic_javascript_checkers = ['jshint']
 
 if has("autocmd")
