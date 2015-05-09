@@ -40,6 +40,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-scripts/bats.vim'
 Plugin 'fatih/vim-go'
+Plugin 'empanda/vim-varnish'
 
 " Use :PluginInstall to install newly added plugins
 
