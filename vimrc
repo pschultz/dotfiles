@@ -145,9 +145,12 @@ let g:php_cs_fixer_php_path = "php"
 let g:phpqa_messdetector_autorun = 0
 let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_codesniffer_args = "--standard=PSR2"
-let g:gofmt_command = '~/bin/goimports'
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 0
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go', 'javascript', 'coffee'],'passive_filetypes': [] }
 let g:syntastic_javascript_checkers = ['jshint']
+" uncomment to skip 'go build' on save
+" let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
 if has("autocmd")
 
@@ -167,6 +170,7 @@ if has("autocmd")
   au FileType xml        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType xsd        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType javascript nnoremap <leader>f :w<CR>:%!python -mjson.tool<CR>
+  au FileType go         nnoremap <leader>ds <Plug>(go-def-split)
 
   " Use hard tabs for Makefiles
   au FileType make setl noet sw=4 ts=4
@@ -181,7 +185,8 @@ if has("autocmd")
   augroup vimrcEx
   au! 
 
-  autocmd FileType go autocmd BufWritePre <buffer> silent Fmt
+  autocmd FileType go nmap <Leader>e <Plug>(go-rename)
+  autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
@@ -205,6 +210,9 @@ if has("autocmd")
   au BufNewFile,BufRead *.html.twig set filetype=html.twig
   au BufNewFile,BufRead *.ejs set filetype=html
   au BufNewFile,BufRead *.sls set filetype=yaml
+  au BufNewFile,BufRead * setlocal formatoptions-=w
+
+  au BufWritePre        *.go call Gofmt()
 
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost * if line("'\"") > 1 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -216,6 +224,28 @@ else
   set autoindent>--->---" always set autoindenting on
 
 endif " has("autocmd")
+
+func Gofmt()
+    let l:view = winsaveview()
+    let l:tmpname = tempname()
+    let l:tmpundofile=tempname()
+
+    exe 'wundo! ' . l:tmpundofile
+    call writefile(getline(1, '$'), l:tmpname)
+
+    silent %!goimports
+    if v:shell_error
+        call rename(l:tmpname, expand('%'))
+        silent edit!
+    else
+        call delete(l:tmpname)
+    endif
+
+    silent! exe 'rundo ' . l:tmpundofile
+    call delete(l:tmpundofile)
+    call winrestview(l:view)
+    setf go
+endfunc()
 
 set exrc            " enable per-directory .vimrc files
 set secure          " disable unsafe commands in local .vimrc files
