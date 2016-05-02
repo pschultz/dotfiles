@@ -78,7 +78,7 @@ PROMPT_COMMAND='
     test "$w" = "*$PWD" && w=$PWD
     PS1="\[\033[2;32m\][\A] \[\033[00m\]${debian_chroot:+($debian_chroot)}\u@\h:$w\[\033[2;32m\]$(parse_git_branch)\[\033[00m\]\\$ "
 '
-unset color_prompt force_color_prompt
+unset color_prompt force_color_prompt command_not_found_handle
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
