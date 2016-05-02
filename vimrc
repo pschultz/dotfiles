@@ -147,7 +147,7 @@ let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_codesniffer_args = "--standard=PSR2"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 0
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go', 'javascript', 'coffee'],'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go'],'passive_filetypes': [] }
 let g:syntastic_javascript_checkers = ['jshint']
 " uncomment to skip 'go build' on save
 " let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
