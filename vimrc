@@ -39,6 +39,10 @@ Plugin 'vim-scripts/bats.vim'
 Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
 Plugin 'empanda/vim-varnish'
+Plugin 'AndrewRadev/linediff.vim'
+Plugin 'kana/vim-textobj-user'
+Plugin 'glts/vim-textobj-comment' " type gqic to format the current comment
+Plugin 'kylef/apiblueprint.vim'
 Plugin 'rking/ag.vim'
 
 " Use :PluginInstall to install newly added plugins
