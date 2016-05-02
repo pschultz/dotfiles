@@ -28,7 +28,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'pschultz/snipmate.vim'
 Plugin 'pschultz/nginx-vim-syntax'
 Plugin 'beyondwords/vim-twig'
-"Plugin 'joonty/vim-phpqa'
+Plugin 'joonty/vim-phpqa'
 Plugin 'beberlei/vim-php-refactor'
 Plugin 'tpope/vim-pathogen'
 Plugin 'scrooloose/syntastic'
@@ -203,7 +203,6 @@ if has("autocmd")
   au BufNewFile,BufRead *.thor set filetype=ruby
   au BufNewFile,BufRead *.twig set filetype=twig
   au BufNewFile,BufRead *.html.twig set filetype=html.twig
-  au BufNewFile,BufRead *.god  set filetype=ruby
   au BufNewFile,BufRead *.ejs set filetype=html
   au BufNewFile,BufRead *.sls set filetype=yaml
 
