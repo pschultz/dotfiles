@@ -120,7 +120,10 @@ let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 0
 let g:go_bin_path = "/home/pschultz/bin"
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go'],'passive_filetypes': [] }
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jscs']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:elm_syntastic_show_warnings = 1
 " uncomment to skip 'go build' on save
 " let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
