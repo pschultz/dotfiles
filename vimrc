@@ -145,6 +145,7 @@ if has("autocmd")
   au FileType xml        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType xsd        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType javascript nnoremap <leader>f :w<CR>:%!python -mjson.tool<CR>
+  au FileType elm        nnoremap <leader>f :ElmFormat<CR>
   au FileType go         nnoremap <leader>ds <Plug>(go-def-split)
 
   " Use hard tabs for Makefiles
@@ -187,7 +188,8 @@ if has("autocmd")
   au BufNewFile,BufRead *.sls set filetype=yaml
   au BufNewFile,BufRead * setlocal formatoptions-=w
 
-  au BufWritePre        *.go call Gofmt()
+  au BufWritePre        *.go  call Gofmt()
+  au BufWritePre        *.elm ElmFormat
 
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost * if line("'\"") > 1 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif
