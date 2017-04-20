@@ -129,7 +129,7 @@ let g:elm_syntastic_show_warnings = 1
 
 if has("autocmd")
 
-  nnoremap <leader>u :r ! php -r 'echo uniqid("",1);'<CR>
+  nnoremap <leader>u :r /proc/sys/kernel/random/uuid<CR>
 
   " These languages tend to have quite deep nesting levels, so set tabwidth to 2
   au FileType javascript setl sw=2 sts=2 et
