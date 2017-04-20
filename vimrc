@@ -76,7 +76,7 @@ color twilight256
 "color solarized
 "se background=light
 se cursorline
-hi cursorline  cterm=none ctermbg=234 ctermfg=none guibg=black guifg=none
+hi cursorline  cterm=none ctermbg=234 ctermfg=none guibg=black
 hi colorcolumn ctermbg=234
 
 nnoremap <leader>cl :hi cursorline  cterm=none ctermbg=234 ctermfg=none guibg=black guifg=none<CR>:hi colorcolumn ctermbg=234<CR>
