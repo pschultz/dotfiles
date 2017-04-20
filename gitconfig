@@ -9,8 +9,6 @@
 [alias]
 	lol = log --graph --pretty=format:'%h %C(yellow)%ai%Creset %C(yellow dim)%ar%Creset %an%C(green)% d%Creset %C(blue bold)%s'
 	rebase-conflict-source = !head $(git rev-parse --show-toplevel)/.git/rebase-apply/0001
-	sync = remote update -p
-	review = !git push gerrit HEAD:refs/for/$(git rev-parse --abbrev-ref HEAD)
 [merge]
 	conflictstyle = diff3
 [branch]
