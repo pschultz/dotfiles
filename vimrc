@@ -44,6 +44,9 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'glts/vim-textobj-comment' " type gqic to format the current comment
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'rking/ag.vim'
+Plugin 'ElmCast/elm-vim'
+Plugin 'b4b4r07/vim-hcl'
+Plugin 'junegunn/fzf'
 
 " Use :PluginInstall to install newly added plugins
 
