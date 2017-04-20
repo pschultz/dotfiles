@@ -68,8 +68,9 @@ endif
 filetype plugin indent on
 
 syntax on
-se ai nu vb t_Co=256 pastetoggle=<F9> scrolloff=3 hlsearch history=1000 listchars=tab:>-,trail:-,extends:>,precedes:<
-se expandtab shiftwidth=4 softtabstop=4
+set ai nu vb t_Co=256 pastetoggle=<F9> scrolloff=3 hlsearch history=1000 listchars=tab:>-,trail:-,extends:>,precedes:<
+set expandtab shiftwidth=4 softtabstop=4
+set nojoinspaces
 
 color twilight256
 "color solarized
