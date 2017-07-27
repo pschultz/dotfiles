@@ -23,13 +23,10 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'godlygeek/tabular'
 Plugin 'pschultz/snipmate.vim'
 Plugin 'pschultz/nginx-vim-syntax'
 Plugin 'beyondwords/vim-twig'
-Plugin 'joonty/vim-phpqa'
-Plugin 'beberlei/vim-php-refactor'
 Plugin 'tpope/vim-pathogen'
 Plugin 'scrooloose/syntastic'
 Plugin 'ekalinin/Dockerfile.vim'
@@ -107,15 +104,6 @@ if &diff
 endif
 
 let g:PHP_vintage_case_default_indent = 1
-let g:php_cs_fixer_path = "php-cs-fixer"
-let g:php_cs_fixer_level = "all"
-"let g:php_cs_fixer_config = "default"
-let g:php_cs_fixer_php_path = "php"
-"let g:php_cs_fixer_fixers_list = ""
-"let g:php_cs_fixer_verbose = 1
-let g:phpqa_messdetector_autorun = 0
-let g:phpqa_codesniffer_autorun = 0
-let g:phpqa_codesniffer_args = "--standard=PSR2"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 0
 let g:go_bin_path = "/home/pschultz/bin"
@@ -140,7 +128,6 @@ if has("autocmd")
   au FileType ruby       setl sw=2 sts=2 et
   au FileType go         setl ts=4
   au FileType puppet     hi cursorline  cterm=NONE ctermbg=234 ctermfg=none guibg=black guifg=none
-  au FileType php        nnoremap <leader>f :w<CR>:call PhpCsFixerFixFile()<CR>:e<CR>
   au FileType php        setl cc=151
   au FileType xml        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
   au FileType xsd        nnoremap <leader>f :w<CR>:%!xmllint --format -<CR>
