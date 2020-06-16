@@ -105,10 +105,13 @@ if &diff
 endif
 
 let g:PHP_vintage_case_default_indent = 1
+let g:go_autodetect_gopath = 0
 let g:go_fmt_command = "goimports"
-let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
+let g:go_rename_command = 'gopls'
 let g:go_bin_path = "/home/pschultz/bin"
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go'],'passive_filetypes': [] }
+let g:syntastic_go_checkers = ['go']
 let g:syntastic_javascript_checkers = ['jscs']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -176,7 +179,6 @@ if has("autocmd")
   au BufNewFile,BufRead *.sls set filetype=yaml
   au BufNewFile,BufRead * setlocal formatoptions-=w
 
-  au BufWritePre        *.go  call Gofmt()
   au BufWritePre        *.elm ElmFormat
   au BufWritePre        *.js,*.jsx Prettier
 
@@ -190,28 +192,6 @@ else
   set autoindent>--->---" always set autoindenting on
 
 endif " has("autocmd")
-
-func Gofmt()
-    let l:view = winsaveview()
-    let l:tmpname = tempname()
-    let l:tmpundofile=tempname()
-
-    exe 'wundo! ' . l:tmpundofile
-    call writefile(getline(1, '$'), l:tmpname)
-
-    silent %!goimports
-    if v:shell_error
-        call rename(l:tmpname, expand('%'))
-        silent edit!
-    else
-        call delete(l:tmpname)
-    endif
-
-    silent! exe 'rundo ' . l:tmpundofile
-    call delete(l:tmpundofile)
-    call winrestview(l:view)
-    setf go
-endfunc()
 
 set exrc            " enable per-directory .vimrc files
 set secure          " disable unsafe commands in local .vimrc files
