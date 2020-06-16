@@ -43,6 +43,7 @@ Plugin 'rking/ag.vim'
 Plugin 'ElmCast/elm-vim'
 Plugin 'b4b4r07/vim-hcl'
 Plugin 'junegunn/fzf'
+Plugin 'prettier/vim-prettier'
 
 " Use :PluginInstall to install newly added plugins
 
@@ -177,6 +178,7 @@ if has("autocmd")
 
   au BufWritePre        *.go  call Gofmt()
   au BufWritePre        *.elm ElmFormat
+  au BufWritePre        *.js,*.jsx Prettier
 
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost * if line("'\"") > 1 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif
