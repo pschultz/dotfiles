@@ -140,6 +140,7 @@ if has("autocmd")
 
   " Use hard tabs for Makefiles
   au FileType make setl noet sw=4 ts=4
+  au FileType proto setl et sw=2 ts=2
 
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
@@ -177,6 +178,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.ejs set filetype=html
   au BufNewFile,BufRead *.sls set filetype=yaml
   au BufNewFile,BufRead * setlocal formatoptions-=w
+  au BufNewFile,BufRead *.proto set filetype=proto
 
   au BufWritePre        *.elm ElmFormat
   au BufWritePre        *.js,*.jsx Prettier
