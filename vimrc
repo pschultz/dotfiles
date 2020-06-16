@@ -179,6 +179,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.sls set filetype=yaml
   au BufNewFile,BufRead * setlocal formatoptions-=w
   au BufNewFile,BufRead *.proto set filetype=proto
+  au BufNewFile,BufRead *.svelte set filetype=html ts=2 sts=2 sw=2 noet
 
   au BufWritePre        *.elm ElmFormat
   au BufWritePre        *.js,*.jsx Prettier
