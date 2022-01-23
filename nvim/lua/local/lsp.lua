@@ -4,6 +4,13 @@ function M.init(packer)
     packer.use {
         'neovim/nvim-lspconfig',
         config = M.config,
+        requires = {
+            'hrsh7th/nvim-cmp',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+        },
     }
 end
 
@@ -29,6 +36,50 @@ function lsp_map_keys(client, bufnr)
 end
 
 function M.config()
+    -- https://github.com/hrsh7th/nvim-cmp#setup
+    local cmp = require('cmp')
+    local i = 0
+    cmp.setup {
+        completion = {
+            autocomplete = false, -- require key press for completion
+        },
+        mapping = {
+            ['<C-n>'] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item()
+                else
+                    cmp.complete()
+                end
+            end, { 'i', 'c' }),
+            ['<C-p>'] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                else
+                    cmp.complete()
+                end
+            end, { 'i', 'c' }),
+        },
+        sources = cmp.config.sources({
+            { name = 'nvim_lsp' },
+            { name = 'buffer' },
+            { name = 'path' },
+        }),
+    }
+
+    cmp.setup.cmdline(':', {
+        sources = {
+            { name = 'cmdline' },
+            { name = 'path' },
+        },
+    })
+    cmp.setup.cmdline('/', {
+        sources = {
+            { name = 'buffer' },
+        },
+    })
+
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     local servers = {
         'gopls',  -- go install golang.org/x/tools/gopls@latest
@@ -47,11 +98,13 @@ function M.config()
     for _, key in pairs(servers) do
         lspconfig[key].setup {
             on_attach = lsp_map_keys,
+            capabilities = capabilities,
         }
     end
 
     lspconfig.phpactor.setup { -- https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
         on_attach = lsp_map_keys,
+        capabilities = capabilities,
         cmd = {
             -- make sure we're loading the least amount of extensions necessary,
             -- for performance. XDebug is especially bad. It sucks that this
