@@ -1,4 +1,14 @@
-local function config()
+local M = {}
+
+M.init = function(packer)
+    packer.use {
+        'nvim-treesitter/nvim-treesitter', -- provides ASTs and syntax highlighting
+        run = ':TSUpdate',
+        config = M.config,
+    }
+end
+
+M.config = function()
     require('nvim-treesitter.configs').setup {
         ensure_installed = {
             'lua',
@@ -23,6 +33,4 @@ local function config()
     }
 end
 
-return {
-	config = config
-}
+return M

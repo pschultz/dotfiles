@@ -29,39 +29,14 @@ local function load_plugins(packer_bootstrap)
     local use = packer.use
     packer.reset()
 
-    packer.set_handler('tokyonight_hack', function(plugins, plugin, value)
-        put(plugin)
-    end)
-
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use {
-        'neovim/nvim-lspconfig',
-        config = function() require('local/lsp').config() end,
-    }
-
-    use {
-        'mattn/vim-goimports',
-        config = function() require('local/goimports').config() end,
-    }
-
-    use {
-        'nvim-lualine/lualine.nvim', -- status line
-        config = function() require('local/lualine').config() end,
-    }
-
-    use {
-        'nvim-treesitter/nvim-treesitter', -- provides ASTs and syntax highlighting
-        run = ':TSUpdate',
-        config = function() require('local/treesitter').config() end,
-    }
-
-    use {
-        'folke/tokyonight.nvim', -- colorscheme
-        config = function() require('local/theme').config() end,
-        tokyonight_hack = true,
-    }
+    require('local/goimports').init(packer)
+    require('local/lsp').init(packer)
+    require('local/lualine').init(packer)
+    require('local/treesitter').init(packer)
+    require('local/theme').init(packer)
 
     use 'AndrewRadev/linediff.vim'
 

@@ -1,4 +1,13 @@
-local function on_attach(client, bufnr)
+local M = {}
+
+function M.init(packer)
+    packer.use {
+        'neovim/nvim-lspconfig',
+        config = M.config,
+    }
+end
+
+function lsp_map_keys(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...)
     
@@ -19,23 +28,30 @@ local function on_attach(client, bufnr)
     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 end
 
-local function config()
+function M.config()
     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    local servers = {
+        'gopls',  -- go install golang.org/x/tools/gopls@latest
+        'bashls', -- npm i -g bash-language-server
+        'elmls',  -- npm install -g elm elm-test elm-format @elm-tooling/elm-language-server
+        'ltex',   -- https://github.com/valentjn/ltex-ls/releases
+
+        -- npm i -g vscode-langservers-extracted
+        'cssls',
+        'html',
+        'jsonls',
+        'eslint',
+    }
+
     local lspconfig = require('lspconfig')
+    for _, key in pairs(servers) do
+        lspconfig[key].setup {
+            on_attach = lsp_map_keys,
+        }
+    end
 
-    lspconfig.gopls.setup { on_attach = on_attach } -- go install golang.org/x/tools/gopls@latest
-    lspconfig.bashls.setup { on_attach = on_attach } -- npm i -g bash-language-server
-
-    -- npm i -g vscode-langservers-extracted
-    lspconfig.cssls.setup { on_attach = on_attach }
-    lspconfig.html.setup { on_attach = on_attach }
-    lspconfig.jsonls.setup { on_attach = on_attach }
-    lspconfig.eslint.setup { on_attach = on_attach }
-
-    lspconfig.elmls.setup { on_attach = on_attach } -- npm install -g elm elm-test elm-format @elm-tooling/elm-language-server
-    lspconfig.ltex.setup { on_attach = on_attach } -- https://github.com/valentjn/ltex-ls/releases
-    lspconfig.phpactor.setup {
-        on_attach = on_attach,
+    lspconfig.phpactor.setup { -- https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
+        on_attach = lsp_map_keys,
         cmd = {
             -- make sure we're loading the least amount of extensions necessary,
             -- for performance. XDebug is especially bad. It sucks that this
@@ -49,9 +65,7 @@ local function config()
             '-d', 'extension=tokenizer.so',
             '/home/pschultz/bin/phpactor/bin/phpactor', 'language-server',
         },
-    } -- https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
+    }
 end
 
-return {
-	config = config
-}
+return M

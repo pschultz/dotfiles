@@ -1,4 +1,13 @@
-local function config()
+local M = {}
+
+M.init = function(packer)
+    packer.use {
+        'nvim-lualine/lualine.nvim', -- status line
+        config = M.config
+    }
+end
+
+M.config = function()
     require('lualine').setup {
         -- https://github.com/nvim-lualine/lualine.nvim#default-configuration
         options = {
@@ -11,6 +20,4 @@ local function config()
     }
 end
 
-return {
-	config = config
-}
+return M

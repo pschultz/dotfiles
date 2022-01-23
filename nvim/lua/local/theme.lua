@@ -1,4 +1,13 @@
-local function config()
+local M = {}
+
+M.init = function(packer)
+    packer.use {
+        'folke/tokyonight.nvim',
+        config = M.config
+    }
+end
+
+M.config = function()
     -- vim.g.tokyonight_style = 'day'
     -- vim.g.tokyonight_style = 'night'
     vim.g.tokyonight_style = 'storm'
@@ -18,7 +27,6 @@ local function config()
     }
     --]]
 
-    vim.cmd('set termguicolors')
     vim.cmd('colorscheme tokyonight')
 
     require('lualine').setup {
@@ -29,7 +37,4 @@ local function config()
     }
 end
 
-
-return {
-	config = config
-}
+return M
