@@ -38,6 +38,7 @@ local function load_plugins(packer_bootstrap)
     require('local/treesitter').init(packer)
     require('local/theme').init(packer)
 
+    use 'axelf4/vim-strip-trailing-whitespace'
     use 'AndrewRadev/linediff.vim'
 
     if packer_bootstrap then
