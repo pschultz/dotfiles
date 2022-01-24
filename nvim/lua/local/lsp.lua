@@ -61,8 +61,15 @@ function M.config()
         },
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
-            { name = 'buffer' },
             { name = 'path' },
+            {
+                name = 'buffer',
+                option = {
+                    get_bufnrs = function()
+                        return vim.api.nvim_list_bufs() -- search all buffers
+                    end,
+                },
+            },
         }),
     }
 
