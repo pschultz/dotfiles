@@ -33,6 +33,7 @@ local function load_plugins(packer_bootstrap)
     use 'wbthomason/packer.nvim'
 
     require('local/goimports').init(packer)
+    require('local/telescope').init(packer)
     require('local/lsp').init(packer)
     require('local/lualine').init(packer)
     require('local/treesitter').init(packer)
