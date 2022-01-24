@@ -109,6 +109,16 @@ function M.config()
         }
     end
 
+    lspconfig.ansiblels.setup { -- npm i -g ansible-language-server
+        on_attach = lsp_map_keys,
+        capabilities = capabilities,
+        settings = {
+            ansibleLint = {
+                enabled = false,
+            },
+        },
+    }
+
     lspconfig.phpactor.setup { -- https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
         on_attach = lsp_map_keys,
         capabilities = capabilities,
