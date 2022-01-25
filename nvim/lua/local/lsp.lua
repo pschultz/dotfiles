@@ -14,7 +14,11 @@ function M.init(packer)
     }
 end
 
-function lsp_map_keys(client, bufnr)
+function on_attach(client, bufnr)
+    -- Always show the sign column on the far left so the view doesn't bounce
+    -- around as LSP annotations come and go.
+    vim.cmd('set signcolumn=yes')
+
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...)
 
@@ -77,7 +81,7 @@ function M.config()
     local lspconfig = require('lspconfig')
     for _, key in pairs(servers) do
         lspconfig[key].setup {
-            on_attach = lsp_map_keys,
+            on_attach = on_attach,
             capabilities = capabilities,
             flags = {
                 debounce_text_changes = 1000, -- milliseconds
@@ -86,7 +90,7 @@ function M.config()
     end
 
     lspconfig.ansiblels.setup { -- npm i -g ansible-language-server
-        on_attach = lsp_map_keys,
+        on_attach = on_attach,
         capabilities = capabilities,
         settings = {
             ansibleLint = {
@@ -96,7 +100,7 @@ function M.config()
     }
 
     lspconfig.phpactor.setup { -- https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
-        on_attach = lsp_map_keys,
+        on_attach = on_attach,
         capabilities = capabilities,
         cmd = {
             -- make sure we're loading the least amount of extensions necessary,
