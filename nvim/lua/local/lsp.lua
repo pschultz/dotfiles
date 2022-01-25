@@ -17,9 +17,6 @@ end
 function lsp_map_keys(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...)
-    
-    -- Enable completion triggered by <c-x><c-o>
-    --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     local opts = { noremap=true, silent=true }
 
@@ -45,20 +42,9 @@ function M.config()
             autocomplete = false, -- require key press for completion
         },
         mapping = {
-            ['<C-n>'] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                else
-                    cmp.complete()
-                end
-            end, { 'i', 'c' }),
-            ['<C-p>'] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                else
-                    cmp.complete()
-                end
-            end, { 'i', 'c' }),
+            ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+            ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+            ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
         },
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
@@ -66,25 +52,11 @@ function M.config()
             {
                 name = 'buffer',
                 option = {
-                    get_bufnrs = function()
-                        return vim.api.nvim_list_bufs() -- search all buffers
-                    end,
+                    get_bufnrs = vim.api.nvim_list_bufs, -- search all buffers
                 },
             },
         }),
     }
-
-    cmp.setup.cmdline(':', {
-        sources = {
-            { name = 'cmdline' },
-            { name = 'path' },
-        },
-    })
-    cmp.setup.cmdline('/', {
-        sources = {
-            { name = 'buffer' },
-        },
-    })
 
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -107,6 +79,9 @@ function M.config()
         lspconfig[key].setup {
             on_attach = lsp_map_keys,
             capabilities = capabilities,
+            flags = {
+                debounce_text_changes = 1000, -- milliseconds
+            },
         }
     end
 
