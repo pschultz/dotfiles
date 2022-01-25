@@ -1,6 +1,8 @@
 vim.cmd('set nu ai et sts=4 sw=4 ts=4 tw=78 cursorline encoding=utf8')
 vim.cmd('set pastetoggle=<F9>')
 
+vim.g.mapleader = ' '
+
 -- restore cursor position when opening files.
 vim.cmd([[
     autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif 
