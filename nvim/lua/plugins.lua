@@ -41,6 +41,7 @@ local function load_plugins(packer_bootstrap)
 
     use 'axelf4/vim-strip-trailing-whitespace'
     use 'AndrewRadev/linediff.vim'
+    use 'tpope/vim-commentary'
 
     if packer_bootstrap then
         packer.sync()

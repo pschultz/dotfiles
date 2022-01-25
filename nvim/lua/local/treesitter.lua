@@ -5,6 +5,9 @@ M.init = function(packer)
         'nvim-treesitter/nvim-treesitter', -- provides ASTs and syntax highlighting
         run = ':TSUpdate',
         config = M.config,
+        requires = {
+            {'JoosepAlviste/nvim-ts-context-commentstring'},
+        }
     }
 end
 
@@ -25,11 +28,13 @@ M.config = function()
             'latex',
             'php',
         },
+        context_commentstring = {
+            enable = true
+        },
         highlight = {
             enable = true,
             disable = {},
-
-        }
+        },
     }
 end
 
