@@ -15,6 +15,13 @@ M.config = function()
         },
         sections = {
             lualine_b = {'branch', 'diagnostics'}, -- no 'diff'
+            lualine_c = {
+                {
+                    'filename',
+                    file_status = true,
+                    path = 1,
+                },
+            },
             lualine_y = {}, -- defaults to {'progress'},
         },
     }
