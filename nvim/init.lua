@@ -20,3 +20,4 @@ function _G.put(...)
 end
 
 require('plugins').init()
+require('local/terminal')
