@@ -39,6 +39,7 @@ local function load_plugins(packer_bootstrap)
     require('local/lualine').init(packer)
     require('local/treesitter').init(packer)
     require('local/theme').init(packer)
+    require('local/markdown-preview').init(packer)
 
     use 'axelf4/vim-strip-trailing-whitespace'
     use 'AndrewRadev/linediff.vim'
