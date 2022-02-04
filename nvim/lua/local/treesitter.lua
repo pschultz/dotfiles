@@ -35,6 +35,9 @@ M.config = function()
             enable = true,
             disable = {},
         },
+        indent = {
+            enable = {'hcl'},
+        },
     }
 end
 
