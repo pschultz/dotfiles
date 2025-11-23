@@ -35,7 +35,7 @@ function on_attach(client, bufnr)
     buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<leader>ne', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '<leader>ne', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 end
 
 function M.config()
@@ -69,14 +69,14 @@ function M.config()
         }),
     }
 
-    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     local servers = {
         'gopls',  -- go install golang.org/x/tools/gopls@latest
         'bashls', -- npm i -g bash-language-server
         'elmls',  -- npm install -g elm elm-test elm-format @elm-tooling/elm-language-server
-        'ltex',   -- https://github.com/valentjn/ltex-ls/releases
+        --'ltex',   -- https://github.com/valentjn/ltex-ls/releases
 
         -- npm i -g vscode-langservers-extracted
         'cssls',

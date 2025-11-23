@@ -28,7 +28,7 @@ Plugin 'pschultz/snipmate.vim'
 Plugin 'pschultz/nginx-vim-syntax'
 Plugin 'beyondwords/vim-twig'
 Plugin 'tpope/vim-pathogen'
-Plugin 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'vim-vdebug/vdebug'
 Plugin 'editorconfig/editorconfig-vim'
@@ -44,6 +44,8 @@ Plugin 'ElmCast/elm-vim'
 Plugin 'b4b4r07/vim-hcl'
 Plugin 'junegunn/fzf'
 Plugin 'prettier/vim-prettier'
+Plugin 'rust-lang/rust.vim'
+Plugin 'tpope/vim-abolish'
 
 " Use :PluginInstall to install newly added plugins
 
@@ -107,15 +109,19 @@ endif
 let g:PHP_vintage_case_default_indent = 1
 let g:go_autodetect_gopath = 0
 let g:go_fmt_command = "goimports"
+"let g:go_fmt_command = "gofmt"
 let g:go_fmt_autosave = 1
 let g:go_rename_command = 'gopls'
 let g:go_bin_path = "/home/pschultz/bin"
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go'],'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go', 'rust'],'passive_filetypes': [] }
+"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['rust'],'passive_filetypes': [] }
 let g:syntastic_go_checkers = ['go']
 let g:syntastic_javascript_checkers = ['jscs']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:elm_syntastic_show_warnings = 1
+let g:rustfmt_autosave = 1
+let g:syntastic_rust_checkers = ['cargo']
 " uncomment to skip 'go build' on save
 " let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
@@ -171,6 +177,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.less set filetype=less
   au BufNewFile,BufRead *.json set filetype=javascript
   au BufNewFile,BufRead *.json nnoremap <leader>f :w<CR>:%!jq .<CR>
+  au BufNewFile,BufRead *.rs nnoremap <leader>f :w<CR>:%!rustfmt<CR>
   au BufNewFile,BufRead *.god  set filetype=ruby
   au BufNewFile,BufRead *.thor set filetype=ruby
   au BufNewFile,BufRead *.twig set filetype=twig
@@ -181,7 +188,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.proto set filetype=proto
   au BufNewFile,BufRead *.svelte set filetype=html ts=2 sts=2 sw=2 noet
 
-  au BufWritePre        *.elm ElmFormat
+  " au BufWritePre        *.elm ElmFormat
   au BufWritePre        *.js,*.jsx Prettier
 
   " When editing a file, always jump to the last cursor position

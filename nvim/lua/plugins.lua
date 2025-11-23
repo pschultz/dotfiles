@@ -40,10 +40,13 @@ local function load_plugins(packer_bootstrap)
     require('local/treesitter').init(packer)
     require('local/theme').init(packer)
     require('local/markdown-preview').init(packer)
+    require('local/config-local').init(packer)
+    -- require('local/tabby').init(packer)
 
     use 'axelf4/vim-strip-trailing-whitespace'
     use 'AndrewRadev/linediff.vim'
     use 'tpope/vim-commentary'
+    use 'tpope/vim-abolish'
     use 'ElmCast/elm-vim'
 
     if packer_bootstrap then

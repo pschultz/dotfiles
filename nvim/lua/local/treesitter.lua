@@ -1,6 +1,8 @@
 local M = {}
 
 M.init = function(packer)
+    vim.g.skip_ts_context_commentstring_module = true
+
     packer.use {
         'nvim-treesitter/nvim-treesitter', -- provides ASTs and syntax highlighting
         run = ':TSUpdate',
@@ -28,9 +30,6 @@ M.config = function()
             'latex',
             'php',
         },
-        context_commentstring = {
-            enable = true
-        },
         highlight = {
             enable = true,
             disable = {},
@@ -39,6 +38,8 @@ M.config = function()
             enable = {'hcl'},
         },
     }
+
+    require('ts_context_commentstring').setup {}
 end
 
 return M
