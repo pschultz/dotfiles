@@ -71,13 +71,17 @@ function parse_git_branch {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
 
-PROMPT_COMMAND='
-    pwd="${PWD/$HOME/~}"
-    w="*/$(expr match "$pwd" ".*/\(.*/.*/.*\)")"
-    test "$w" = "*/" && w=$pwd
-    test "$w" = "*$PWD" && w=$PWD
-    PS1="\[\033[2;32m\][\A] \[\033[00m\]${debian_chroot:+($debian_chroot)}\u@\h:$w\[\033[2;32m\]$(parse_git_branch)\[\033[00m\]\\$ "
-'
+if [ -x "$HOME/bin/promptd" ]; then
+    PROMPT_COMMAND='PS1=$($HOME/bin/promptd $PWD)'
+else
+    PROMPT_COMMAND='
+        pwd="${PWD/$HOME/~}"
+        w="*/$(expr match "$pwd" ".*/\(.*/.*/.*\)")"
+        test "$w" = "*/" && w=$pwd
+        test "$w" = "*$PWD" && w=$PWD
+        PS1="\[\033[2;35m\][\A] \[\033[00m\]${debian_chroot:+($debian_chroot)}\u@\h:$w\[\033[2;32m\]$(parse_git_branch)\[\033[00m\]\\$ "
+    '
+fi
 unset color_prompt force_color_prompt command_not_found_handle
 
 # If this is an xterm set the title to user@host:dir
