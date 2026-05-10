@@ -22,5 +22,5 @@ vim.cmd([[
 --     return ...
 -- end
 
-require('plugins').init()
+require('config.lazy').init()
 require('local/terminal')

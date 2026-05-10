@@ -1,11 +1,6 @@
-local M = {}
-
-M.init = function(packer)
-    packer.use {
-        'mattn/vim-goimports',
-        config = M.config,
-    }
-end
+local M = {
+    'mattn/vim-goimports',
+}
 
 M.config = function()
     vim.g.goimports_simplify = true

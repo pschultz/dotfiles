@@ -1,15 +1,10 @@
-local M = {}
+local M = {
+    'TabbyML/tabby',
+}
 
-M.init = function(packer)
-    packer.use {
-        'TabbyML/tabby', -- status line
-        rtp = 'clients/vim',
-        config = M.config
-    }
-end
-
-M.config = function()
+M.config = function(plugin)
     vim.g.tabby_server_url = 'http://10.201.128.1:80'
+    vim.opt.rtp:append(plugin.dir .. '/clients/vim')
 end
 
 return M

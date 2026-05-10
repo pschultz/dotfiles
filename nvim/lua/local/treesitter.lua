@@ -1,21 +1,19 @@
-local M = {}
+local M = {
+    'nvim-treesitter/nvim-treesitter', -- provides ASTs and syntax highlighting
+    lazy = false,
+    build = ':TSUpdate',
+    dependencies = {
+        {'JoosepAlviste/nvim-ts-context-commentstring'},
+    },
+}
 
-M.init = function(packer)
-    vim.g.skip_ts_context_commentstring_module = true
 
-    packer.use {
-        'nvim-treesitter/nvim-treesitter', -- provides ASTs and syntax highlighting
-        run = ':TSUpdate',
-        config = M.config,
-        requires = {
-            {'JoosepAlviste/nvim-ts-context-commentstring'},
-        }
-    }
-end
 
 M.config = function()
-    require('nvim-treesitter.configs').setup {
-        ensure_installed = {
+    vim.g.skip_ts_context_commentstring_module = true
+
+    require('nvim-treesitter').setup {
+        install = {
             'lua',
             'bash',
             'c',

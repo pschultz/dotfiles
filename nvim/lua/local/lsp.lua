@@ -1,19 +1,15 @@
-local M = {}
+local M = {
+    'neovim/nvim-lspconfig',
+}
 
-function M.init(packer)
-    packer.use {
-        'neovim/nvim-lspconfig',
-        config = M.config,
-        requires = {
-            'hrsh7th/nvim-cmp',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/vim-vsnip',
-        },
-    }
-end
+M.dependencies = {
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/vim-vsnip',
+}
 
 function on_attach(client, bufnr)
     -- Always show the sign column on the far left so the view doesn't bounce
@@ -85,18 +81,17 @@ function M.config()
         'eslint',
     }
 
-    local lspconfig = require('lspconfig')
     for _, key in pairs(servers) do
-        lspconfig[key].setup {
+        vim.lsp.config(key, {
             on_attach = on_attach,
             capabilities = capabilities,
             flags = {
                 debounce_text_changes = 1000, -- milliseconds
             },
-        }
+        })
     end
 
-    lspconfig.ansiblels.setup { -- npm i -g ansible-language-server
+    vim.lsp.config('ansiblels', { -- npm i -g ansible-language-server
         on_attach = on_attach,
         capabilities = capabilities,
         settings = {
@@ -104,9 +99,9 @@ function M.config()
                 enabled = false,
             },
         },
-    }
+    })
 
-    lspconfig.phpactor.setup { -- https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
+    vim.lsp.config('phpactor', { -- https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
         on_attach = on_attach,
         capabilities = capabilities,
         cmd = {
@@ -122,7 +117,7 @@ function M.config()
             '-d', 'extension=tokenizer.so',
             '/home/pschultz/bin/phpactor/bin/phpactor', 'language-server',
         },
-    }
+    })
 end
 
 return M

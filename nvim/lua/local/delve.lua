@@ -1,11 +1,6 @@
-local M = {}
-
-M.init = function(packer)
-    packer.use {
-        'sebdah/vim-delve',
-        config = M.config
-    }
-end
+local M = {
+    'sebdah/vim-delve',
+}
 
 M.config = function()
     -- https://github.com/sebdah/vim-delve#configuration

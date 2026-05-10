@@ -1,14 +1,10 @@
-local M = {}
+local M = {
+    'nvim-telescope/telescope.nvim',
+}
 
-M.init = function(packer)
-    packer.use {
-        'nvim-telescope/telescope.nvim', -- status line
-        requires = {
-            { 'nvim-lua/plenary.nvim' },
-        },
-        config = M.config
-    }
-end
+M.dependencies = {
+    { 'nvim-lua/plenary.nvim' },
+}
 
 M.config = function()
     vim.cmd[[nnoremap ff <cmd>Telescope find_files<cr>]]

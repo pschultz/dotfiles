@@ -1,12 +1,10 @@
-local M = {}
+local M = {
+    'folke/tokyonight.nvim',
+}
 
-M.init = function(packer)
-    packer.use {
-        'folke/tokyonight.nvim',
-        config = M.config
-    }
-end
-
+M.dependencies = {
+    'nvim-lualine/lualine.nvim',
+}
 M.config = function()
     -- vim.g.tokyonight_style = 'day'
     -- vim.g.tokyonight_style = 'storm'

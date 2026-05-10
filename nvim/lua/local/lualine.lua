@@ -1,11 +1,6 @@
-local M = {}
-
-M.init = function(packer)
-    packer.use {
-        'nvim-lualine/lualine.nvim', -- status line
-        config = M.config
-    }
-end
+local M = {
+    'nvim-lualine/lualine.nvim', -- status line
+}
 
 M.config = function()
     require('lualine').setup {

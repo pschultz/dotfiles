@@ -1,14 +1,10 @@
-local M = {}
+local M = {
+    'iamcco/markdown-preview.nvim',
+}
 
-M.init = function(packer)
-    packer.use {
-        'iamcco/markdown-preview.nvim',
-        run = M.run,
-        ft = {'markdown'},
-    }
-end
+M.ft = {'markdown'}
 
-M.run = function()
+M.build = function()
     vim.fn['mkdp#util#install']()
 end
 

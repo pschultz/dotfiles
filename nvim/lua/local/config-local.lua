@@ -1,11 +1,6 @@
-local M = {}
-
-M.init = function(packer)
-    packer.use {
-        'klen/nvim-config-local',
-        config = M.config
-    }
-end
+local M = {
+    'klen/nvim-config-local',
+}
 
 M.config = function()
     require('config-local').setup {
