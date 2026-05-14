@@ -91,6 +91,13 @@ function M.config()
         })
     end
 
+    -- https://github.com/clangd/clangd/releases/latest
+    -- https://clangd.llvm.org/installation
+    local clangd_opts = {}
+    if not vim.lsp.is_enabled('clangd') then
+        vim.lsp.enable('clangd', clangd_opts)
+    end
+
     vim.lsp.config('ansiblels', { -- npm i -g ansible-language-server
         on_attach = on_attach,
         capabilities = capabilities,
