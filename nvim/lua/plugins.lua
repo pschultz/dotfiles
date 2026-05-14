@@ -9,6 +9,7 @@ return {
     -- require('local/markdown-preview'),
     -- require('local/tabby'),
     require('local/treesitter'),
+    require('local/trouble'),
 
     'axelf4/vim-strip-trailing-whitespace',
     'AndrewRadev/linediff.vim',
