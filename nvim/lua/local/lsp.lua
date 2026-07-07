@@ -89,6 +89,7 @@ function M.config()
                 debounce_text_changes = 1000, -- milliseconds
             },
         })
+        vim.lsp.enable(key)
     end
 
     -- https://github.com/clangd/clangd/releases/latest
@@ -107,6 +108,7 @@ function M.config()
             },
         },
     })
+    vim.lsp.enable('ansiblels')
 
     vim.lsp.config('phpactor', { -- https://phpactor.readthedocs.io/en/master/usage/standalone.html#global-installation
         on_attach = on_attach,
@@ -125,6 +127,7 @@ function M.config()
             '/home/pschultz/bin/phpactor/bin/phpactor', 'language-server',
         },
     })
+    vim.lsp.enable('phpactor')
 end
 
 return M
