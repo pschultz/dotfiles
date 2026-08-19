@@ -16,6 +16,8 @@ function on_attach(client, bufnr)
     -- around as LSP annotations come and go.
     vim.cmd('set signcolumn=yes')
 
+    vim.diagnostic.config({ virtual_text = true })
+
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...)
 
