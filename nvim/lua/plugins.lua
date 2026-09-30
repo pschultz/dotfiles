@@ -11,6 +11,8 @@ return {
     require('local/treesitter'),
     require('local/trouble'),
 
+    require('local/claude'),
+
     'axelf4/vim-strip-trailing-whitespace',
     'AndrewRadev/linediff.vim',
     'tpope/vim-commentary',

@@ -1,2 +1,4 @@
 *.sw[a-z]
 .vimrc
+.claude-enabled
+**/.claude/settings.local.json
