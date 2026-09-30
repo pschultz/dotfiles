@@ -1,4 +1,7 @@
 *.sw[a-z]
 .vimrc
+node_modules
+.batcave
+_batcave
 .claude-enabled
 **/.claude/settings.local.json
